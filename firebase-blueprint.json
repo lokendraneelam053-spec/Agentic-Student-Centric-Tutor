@@ -1,0 +1,107 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Student profile and academic preferences",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "branch": { "type": "string" },
+        "semester": { "type": "string" },
+        "subject": { "type": "string" },
+        "topic": { "type": "string" },
+        "knowledgeLevel": { "type": "string" },
+        "goal": { "type": "string" },
+        "availableTime": { "type": "number" },
+        "overallProgress": { "type": "number" },
+        "sessionsCount": { "type": "number" },
+        "strengths": { "type": "array" },
+        "improvementAreas": { "type": "array" },
+        "completedTopics": { "type": "array" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["uid", "name", "email"]
+    },
+    "LearningPlan": {
+      "title": "LearningPlan",
+      "description": "Structured curriculum plan tailored to the student",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "topic": { "type": "string" },
+        "planTitle": { "type": "string" },
+        "summary": { "type": "string" },
+        "totalDuration": { "type": "number" },
+        "steps": { "type": "array" },
+        "adaptedCount": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "topic"]
+    },
+    "EvaluationRecord": {
+      "title": "EvaluationRecord",
+      "description": "Diagnostic assessment evaluation result",
+      "type": "object",
+      "properties": {
+        "totalScore": { "type": "number" },
+        "maxScore": { "type": "number" },
+        "scorePercentage": { "type": "number" },
+        "summary": { "type": "string" },
+        "conceptMastery": { "type": "array" },
+        "conceptsUnderstood": { "type": "array" },
+        "conceptsNeedingImprovement": { "type": "array" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["scorePercentage", "timestamp"]
+    },
+    "AudioTranscription": {
+      "title": "AudioTranscription",
+      "description": "Audio transcription generated with gemini-3.5-transcribe",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "text": { "type": "string" },
+        "durationSeconds": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "text", "createdAt"]
+    },
+    "VoiceConversationSession": {
+      "title": "VoiceConversationSession",
+      "description": "Voice conversation session log with gemini-3.8-live",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "turns": { "type": "array" },
+        "durationSeconds": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile document containing academic settings and overall progress"
+    },
+    "/users/{userId}/plans/{planId}": {
+      "schema": "LearningPlan",
+      "description": "Learning plans generated for the user"
+    },
+    "/users/{userId}/evaluations/{evalId}": {
+      "schema": "EvaluationRecord",
+      "description": "Assessment evaluation records for the user"
+    },
+    "/users/{userId}/transcriptions/{transcriptionId}": {
+      "schema": "AudioTranscription",
+      "description": "Audio transcription records for the user"
+    },
+    "/users/{userId}/voiceSessions/{sessionId}": {
+      "schema": "VoiceConversationSession",
+      "description": "Real-time Live API voice conversation sessions"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Remix Agentic Student-Centric Tutor",
+  "description": "Personalized learning that adapts to you. Intelligent academic tutoring with dynamic planning, continuous assessment, and knowledge gap analysis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
